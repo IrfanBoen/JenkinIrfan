@@ -32,19 +32,16 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging...'
-              
             }
         }
         stage('Integration Tests on Staging') {
             steps {
                 echo 'Running Integration Tests on Staging...'
-          
             }
         }
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to Production...'
-               
             }
         }
     }
@@ -52,8 +49,8 @@ pipeline {
         always {
             echo 'Sending notification emails...'
             mail to: 'IrfanBoenardi1@gmail.com',
-                 subject: "Jenkins Pipeline ${currentBuild.fullDisplayName}",
-                 body: "The build ${currentBuild.fullDisplayName} has finished with status: ${currentBuild.result}. Check console output at ${env.BUILD_URL} to view the results."
+                 subject: "Jenkins Pipeline Build #${currentBuild.number}",
+                 body: "The build ${currentBuild.number} has finished with status: ${currentBuild.result}. Check console output at ${env.BUILD_URL} to view the results."
         }
     }
 }
